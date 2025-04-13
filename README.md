@@ -1,7 +1,7 @@
 # Sistema Bancário em Python |DIO
 
 ## Sobre
-Este repositório contém um [sistema bancário](./main.py) desenvolvido em Python. A aplicação permite a realização de operações básicas , depósito, saque e geração de extratos.
+Este repositório contém um [sistema bancário](Sistema_bancario.py) desenvolvido em Python. A aplicação permite a realização de operações básicas , depósito, saque e geração de extratos.
 
 ## Funcionalidades
 - **Depósito e Saque:** Realize movimentações financeiras de forma segura.
