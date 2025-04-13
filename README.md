@@ -1,2 +1,8 @@
-# Sintema_bancario
-projeto DIO
+# Sistema Bancário em Python |DIO
+
+## Sobre
+Este repositório contém um [sistema bancário](./main.py) desenvolvido em Python. A aplicação permite a realização de operações básicas , depósito, saque e geração de extratos.
+
+## Funcionalidades
+- **Depósito e Saque:** Realize movimentações financeiras de forma segura.
+- **Extrato:** Consulte o histórico de transações de uma conta.
