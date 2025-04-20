@@ -4,12 +4,13 @@ class SistemaBancario:
         self.limite_saque = 500
         self.saques_realizados = 0
         self.limite_saques_diarios = 3
+        self.Trazaçoes_diarias=10
         self.extrato = []
 
     def depositar(self, valor):
         if valor > 0:
-            self.saldo += valor
-            self.extrato.append(f"Depósito: +R${valor:.2f}")
+            self.saldo += valor 
+            self.extrato.append(Trazaçoes_diarias(f"Depósito: +R${valor:.2f}"))
             print(f"Depósito de R${valor:.2f} realizado com sucesso!")
         else:
             print("Valor inválido para depósito.")
@@ -26,8 +27,18 @@ class SistemaBancario:
         else:
             self.saldo -= valor
             self.saques_realizados += 1
-            self.extrato.append(f"Saque: -R${valor:.2f}")
+            self.extrato.append(Trazaçoes_diarias(f"Saque: -R${valor:.2f}"))
             print(f"Saque de R${valor:.2f} realizado com sucesso!")
+    from datetime import datetime
+    class Trazaçoes_diarias:
+        def __init__(self,tipo,valor)
+            self.tipo = tipo:"sacar","depositar"
+            self.valor = valor
+            self.data_hora = datatime.now()
+
+        def __str__(self)
+            return f"{self.data_hora.strftime('%d/%m/%Y %H:%M:%S')} - {self.tipo}: R${self.valor:.2f}"
+
 
     def exibir_extrato(self):
         print("\n--- Extrato ---")
@@ -37,6 +48,7 @@ class SistemaBancario:
             for operacao in self.extrato:
                 print(operacao)
         print(f"Saldo atual: R${self.saldo:.2f}")
+        
         print("----------------\n")
 
 
