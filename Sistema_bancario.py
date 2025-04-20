@@ -1,21 +1,33 @@
+from datetime import datetime
+
 class SistemaBancario:
     def __init__(self):
         self.saldo = 0
         self.limite_saque = 500
         self.saques_realizados = 0
         self.limite_saques_diarios = 3
-        self.Trazaçoes_diarias=10
+        self.limite_transacoes_diarias = 10
+        self.transacoes_realizadas = 0
         self.extrato = []
 
     def depositar(self, valor):
+        if self.transacoes_realizadas >= self.limite_transacoes_diarias:
+            print("Limite diário de transações atingido.")
+            return
+
         if valor > 0:
-            self.saldo += valor 
-            self.extrato.append(Trazaçoes_diarias(f"Depósito: +R${valor:.2f}"))
+            self.saldo += valor
+            self.extrato.append(TrazaçoesDiarias("Depósito", valor))
+            self.transacoes_realizadas += 1
             print(f"Depósito de R${valor:.2f} realizado com sucesso!")
         else:
             print("Valor inválido para depósito.")
 
     def sacar(self, valor):
+        if self.transacoes_realizadas >= self.limite_transacoes_diarias:
+            print("Limite diário de transações atingido.")
+            return
+
         if self.saques_realizados >= self.limite_saques_diarios:
             print("Limite diário de saques atingido.")
         elif valor > self.limite_saque:
@@ -27,18 +39,9 @@ class SistemaBancario:
         else:
             self.saldo -= valor
             self.saques_realizados += 1
-            self.extrato.append(Trazaçoes_diarias(f"Saque: -R${valor:.2f}"))
+            self.transacoes_realizadas += 1
+            self.extrato.append(TrazaçoesDiarias("Saque", valor))
             print(f"Saque de R${valor:.2f} realizado com sucesso!")
-    from datetime import datetime
-    class Trazaçoes_diarias:
-        def __init__(self,tipo,valor)
-            self.tipo = tipo:"sacar","depositar"
-            self.valor = valor
-            self.data_hora = datatime.now()
-
-        def __str__(self)
-            return f"{self.data_hora.strftime('%d/%m/%Y %H:%M:%S')} - {self.tipo}: R${self.valor:.2f}"
-
 
     def exibir_extrato(self):
         print("\n--- Extrato ---")
@@ -48,8 +51,17 @@ class SistemaBancario:
             for operacao in self.extrato:
                 print(operacao)
         print(f"Saldo atual: R${self.saldo:.2f}")
-        
         print("----------------\n")
+
+
+class TrazaçoesDiarias:
+    def __init__(self, tipo, valor):
+        self.tipo = tipo
+        self.valor = valor
+        self.data_hora = datetime.now()
+
+    def __str__(self):
+        return f"{self.data_hora.strftime('%d/%m/%Y %H:%M:%S')} - {self.tipo}: R${self.valor:.2f}"
 
 
 # Exemplo de uso
