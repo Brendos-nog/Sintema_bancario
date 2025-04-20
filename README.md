@@ -5,4 +5,4 @@ Este repositório contém um [sistema bancário](Sistema_bancario.py) desenvolvi
 
 ## Funcionalidades
 - **Depósito e Saque:** Realize movimentações financeiras de forma segura.
-- **Extrato:** Consulte o histórico de transações de uma conta.
+- **Extrato:** Consulte o histórico de transações com data e hora de uma conta.
